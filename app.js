@@ -45,6 +45,7 @@ const sessionChecker = (req, res, next) => {
 
 // route setup
 // app.use("/", homeRouter);
+app.use("/", homeRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
