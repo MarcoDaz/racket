@@ -1,7 +1,8 @@
 const HomeController = {
   Index: (req, res) => {
-    res.render("home/index", { title: "Racket" , signedIn: req.session.signedIn, isHomePage: true});
-  },
-};
+    console.log("############## Now in HomeController Index ##############")
+    res.render("home/index", {});
+  }
+}
 
 module.exports = HomeController;
