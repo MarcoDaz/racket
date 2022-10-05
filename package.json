@@ -8,7 +8,7 @@
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
     "start:test": "PORT=3030 MONGODB_URL='mongodb://0.0.0.0/racket_test' npm start",
-    "test": "jest",
+    "test": "jest --verbose",
     "test:unit": "jest",
     "test:integration": "cypress run"
   },
