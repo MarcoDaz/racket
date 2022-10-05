@@ -21,7 +21,7 @@ const getProductByUrl = async (apiUrl) => {
       ]
     }
   
-    // console.log(`${product.sku} -  ${product.name}`);
+    console.log(`Found ${product.sku} -  ${product.name}`);
 
     return neatProduct;
 node
