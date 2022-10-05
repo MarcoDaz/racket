@@ -9,7 +9,6 @@ describe("User model", () => {
       done();
     });
   });
-
   it("has an email address", () => {
     const user = new User({
       username: "username",
@@ -18,5 +17,23 @@ describe("User model", () => {
       basket: []
     });
     expect(user.email).toEqual("someone@example.com");
+  });
+  it("has a password", () => {
+    const user = new User({
+      username: "username",
+      email: "someone@example.com",
+      password: "password",
+      basket: []
+    });
+    expect(user.password).toEqual("password");
+  });
+  it("has a basket", () => {
+    const user = new User({
+      username: "username",
+      email: "someone@example.com",
+      password: "password",
+      basket: []
+    });
+    expect(user.basket).toEqual([]);
   });
 });
