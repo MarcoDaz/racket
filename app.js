@@ -1,5 +1,6 @@
 const createError = require("http-errors");
 const express = require("express");
+var expressLayouts = require('express-ejs-layouts');
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -46,15 +47,7 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
-// const signedInRedirect = (req, res, next) => {
-//   if (req.session.signedIn == true) {
-//     res.redirect("/")
-//   } else {
-//     next();
-//   }
-// };
-
-// app.use(sessionChecker);
+app.use(expressLayouts);
 
 
 // route setup
