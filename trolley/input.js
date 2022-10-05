@@ -1,7 +1,10 @@
+// manually input data using console
+
 const prompt = require('prompt-sync')();
 const fs = require('fs');
 
 const products = [];
+// i = how many products to add
 for (let i = 0; i < 10; i++) {
   const product = {};
 
@@ -35,8 +38,8 @@ for (let i = 0; i < 10; i++) {
   products.push(product);
 }
 
-
-fs.writeFile('products.js', JSON.stringify(products), function (err) {
-  if (err) throw err;
-  console.log('Saved!');
-});
+// Uncomment to write to a file i.e. products.js
+// fs.writeFile('products.js', JSON.stringify(products), function (err) {
+//   if (err) throw err;
+//   console.log('Saved!');
+// });
