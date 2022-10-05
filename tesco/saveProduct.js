@@ -3,12 +3,7 @@ const Product = require('../models/product');
 const getProducts = require('./getSearch');
 const getProduct = require('./getProduct');
 
-// connect to mongoDb
-const mongoDbUrl = "mongodb://0.0.0.0/racket";
-mongoose.connect(mongoDbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
 
 const saveProductByUrl = async (apiUrl) => {
   const product = await getProduct(apiUrl);
