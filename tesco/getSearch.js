@@ -45,21 +45,26 @@ const getAllProductsBySearch = async (searchTerm) => {
     const products = await Promise.all(
       urls.map(async (apiUrl) => {
         const product = await getProduct(apiUrl);
-        products.push(product)
+        return product;
       })
     );
 
     return products;
-    
   } catch (error) {
     console.log('tesco search failed')
   }
 }
 
-// example: returns 14 items on 05/10/2022
+// EXAMPLE: returns 14 items on 05/10/2022
+// getAllUrlsBySearch('salt snack').then(result => {
+//   console.log(result);
+//   console.log('length:', result.length);
+// });
+
+// EXAMPLE: returns 14 items on 05/10/2022
 // getAllProductsBySearch('salt snack').then(result => {
 //   console.log(result);
-//   console.log(result.length);
+//   console.log('length:', result.length);
 // });
 
 module.exports = getAllProductsBySearch;
