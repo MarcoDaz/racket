@@ -1,8 +1,7 @@
 const axios = require("axios");
 const getScriptContent = require("./getScriptContent");
 
-const getProductById = async (tesco_id) => {
-  const apiUrl  = `https://www.tesco.com/groceries/en-GB/products/${tesco_id}`;
+const getProductByUrl = async (apiUrl) => {
   try {
     const response = await axios.get(apiUrl);
 
@@ -14,15 +13,29 @@ const getProductById = async (tesco_id) => {
       name: product.name,
       images: product.image,
       description: product.description,
-      price: product.offers.price
+      prices: [
+        {
+          price: product.offers.price,
+          date: Date.now()
+        }
+      ]
     }
   
-    return neatProduct;
+    // console.log(`${product.sku} -  ${product.name}`);
 
+    return neatProduct;
+node
   } catch (error) {
     console.log(`${tesco_id} not found`);
     return null;
   };
 };
 
-module.exports = getProductById;
+const getProductById = async (tesco_id) => {
+  const apiUrl  = `https://www.tesco.com/groceries/en-GB/products/${tesco_id}`;
+  const product = await getProductByUrl(apiUrl);
+
+  return product;
+};
+
+module.exports = getProductByUrl;
