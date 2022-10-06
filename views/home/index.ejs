@@ -22,15 +22,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
+    <% products.forEach(product => { %>
+      <h1><%= product.name %></h1>
+        <canvas id="<%= product._id %>" width="400" height="400"></canvas>
+    <% }) %>
+    
 
-  <% products.forEach(product => { %>
-   <h1><%= product.name %></h1>
-   <canvas id="<%= product._id %> " width="400" height="400"></canvas>
-  <% }) %>
+
+  <script src="script.js">
+
+  </script>
+
+  <script>
+    const products = <%- JSON.stringify(products) %> 
+    products.forEach(product => {createChart(product)});
+  </script>
 
 
-  <%= createChart(product) %> 
-  
 
 </body>
 
