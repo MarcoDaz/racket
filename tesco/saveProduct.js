@@ -30,7 +30,7 @@ const saveProductsBySearch = async (searchTerm) => {
 }
 
 // EXAMPLE: saves 14 items
-// saveProductsBySearch('salt snack')
+saveProductsBySearch('salt snack')
 
 // close connection
 // mongoose.connection.close(true);

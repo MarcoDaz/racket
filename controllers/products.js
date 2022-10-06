@@ -1,9 +1,11 @@
 const Product = require("../models/product");
 
 const ProductsController = {
-  Index: (req, res) => {
+  Index: async (req, res) => {
     console.log("############## Now in ProductController New ##############")
-    res.render("products/index", {});
+    const products = await Product.find().exec();
+    console.log(`${products.length} total products`);
+    res.render("products/index", { products: products });
   },
 
   Create: (req, res) => {

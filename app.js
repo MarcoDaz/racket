@@ -11,6 +11,7 @@ const methodOverride = require("method-override");
 const homeRouter = require("./routes/home");
 const usersRouter = require("./routes/users");
 const sessionsRouter = require("./routes/sessions");
+const productsRouter = require('./routes/products');
 
 
 const app = express();
