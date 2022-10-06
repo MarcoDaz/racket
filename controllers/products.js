@@ -1,9 +1,9 @@
 const Product = require("../models/product");
 
-const ProductController = {
-  New: (req, res) => {
+const ProductsController = {
+  Index: (req, res) => {
     console.log("############## Now in ProductController New ##############")
-    res.render("product/new", {});
+    res.render("products/index", {});
   },
 
   Create: (req, res) => {
@@ -14,4 +14,4 @@ const ProductController = {
   }
 }
 
-module.exports = ProductController;
+module.exports = ProductsController;
