@@ -38,6 +38,11 @@ const createChart = (product) => {
     options: {
         responsive: false,
         maintainAspectRatio: true,
+        plugins: {
+            legend: {
+              display: false
+            }
+          },
         scales: {
             y: {
                 min: Math.min.apply(null, productPrices) - ((Math.min.apply(null, productPrices)/10)),
