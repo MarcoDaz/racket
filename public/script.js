@@ -7,10 +7,6 @@
 // and call this script for every product to generate a graph
 
 const createChart = (product) => {
-    var options = { 
-        "responsive": true,
-        "maintainAspectRatio": false
-    }
   const ctx = document.getElementById(product._id).getContext('2d');
   const productPrices = product.prices.map(yoke => {
     return yoke.price
@@ -45,9 +41,12 @@ const createChart = (product) => {
         }]
     },
     options: {
+        responsive: false,
+        maintainAspectRatio: true,
         scales: {
             y: {
-
+                min: Math.min.apply(null, productPrices) - ((Math.min.apply(null, productPrices)/10)),
+                max: Math.max.apply(null, productPrices) + ((Math.min.apply(null, productPrices)/10)),
                 beginAtZero: false
             },
             x: {

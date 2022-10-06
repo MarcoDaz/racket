@@ -11,7 +11,6 @@ const HomeController = {
     
     res.render("home/index", {
       products: products,
-      createChart: createChart,
     });
   }
 }
