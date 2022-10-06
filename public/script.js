@@ -12,7 +12,10 @@ const createChart = (product) => {
     return yoke.price
   })
   const productDates = product.prices.map(yoke => {
-    return yoke.date.substring(0, 7);
+    // return yoke.date.substring(0, 10);
+    const options = {year: 'numeric', month: 'long'};
+    const date = new Date(yoke.date)
+    return date.toLocaleDateString("en-US", options);
   })
   const myChart = new Chart(ctx, {
     type: 'line',
@@ -28,7 +31,8 @@ const createChart = (product) => {
                 'rgba(255, 99, 132, 1)'
             ],
             borderWidth: 3,
-            tension: 0.5
+            tension: 0.5,
+            pointHoverRadius: 10,
         }]
     },
     options: {
