@@ -19,28 +19,52 @@
     <h3>Want to sign up to create a basket? Click here.</h3>
   </a>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <form action="/products/search" method="get" onSubmit="searchProducts(event)">
+    <input type="text" name="searchTerm" id="searchTerm" placeholder="..Product Name">
+    <input type="submit" value="Search" >
+  </form>
 
-
+  <div id="products">
     <% products.forEach(product => { %>
       <h1><%= product.name %></h1>
-        <canvas id="<%= product._id %>" width="300" height="300"></canvas>
+      <canvas id="<%= product._id %>" width="300" height="300"></canvas>
     <% }) %>
-    
-
-
-  <script src="script.js">
-
-  </script>
-
+  </div>
+   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
   <script>
     const products = <%- JSON.stringify(products) %> 
     products.forEach(product => {createChart(product)});
   </script>
+  <script>
+    const searchProducts = async (event) => {
+      event.preventDefault();
+      const searchTerm = event.target.searchTerm.value.trim();
 
+      // prevent empty searches
+      if (!searchTerm) return;
 
+      const apiUrl = event.target.action;
+      const res = await fetch(`${apiUrl}?searchTerm=${searchTerm}`);
+      const results = await res.json();
+      console.log(results)
 
+      const productsDiv = document.getElementById("products");
+      if (results.length > 0) {
+        productsDiv.innerHTML = results.map((product) => {
+          return `
+            <h1>${product.name}</h1>
+            <canvas id="${product._id}" width="300" height="300"></canvas>
+          `
+        });
+
+        results.forEach(product => {createChart(product)});
+      } else {
+        productsDiv.innerHTML = "<h1>No products found</h1>"
+      }
+    }   
+  </script>
 </body>
-
 </html>
 

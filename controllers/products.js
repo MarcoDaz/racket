@@ -3,7 +3,7 @@ const Product = require("../models/product");
 const ProductsController = {
   Search: async (req, res) => {
     console.log("###### Now in ./controllers/products SEARCH ######");
-    const searchTerm = req.query.searchTerm;
+    const searchTerm = req.query.searchTerm.trim();
 
     let results = null;
     if (searchTerm) {
@@ -11,8 +11,8 @@ const ProductsController = {
         name: new RegExp(searchTerm, "i")
       }).exec();
     };
-    
-    res.json(results || "No Search Term Given");
+
+    res.json(results);
   },
 
   Create: (req, res) => {
