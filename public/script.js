@@ -42,11 +42,9 @@ const createChart = (product) => {
             legend: {
               display: false
             }
-          },
+        },
         scales: {
             y: {
-                min: Math.min.apply(null, productPrices) - ((Math.min.apply(null, productPrices)/10)),
-                max: Math.max.apply(null, productPrices) + ((Math.min.apply(null, productPrices)/10)),
                 beginAtZero: false
             },
             x: {
