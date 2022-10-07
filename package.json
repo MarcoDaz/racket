@@ -1,7 +1,6 @@
 {
   "name": "racket",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -28,6 +27,7 @@
     "chart.js": "^3.9.1",
     "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-ejs-layouts": "^2.5.1",
@@ -51,5 +51,6 @@
   },
   "nodemonConfig": {
     "ext": "js,ejs"
-  }
+  },
+  "description": ""
 }
