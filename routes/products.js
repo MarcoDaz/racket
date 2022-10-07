@@ -6,5 +6,6 @@ const ProductsController = require("../controllers/products");
 router.get("/all", ProductsController.All)
 router.get("/search", ProductsController.Search);
 router.post("/create", ProductsController.Create);
+router.get("/:id", ProductsController.ID);
 
 module.exports = router;
