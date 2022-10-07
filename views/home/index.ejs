@@ -81,7 +81,7 @@
 
   
     <% products.forEach(product => { %>
-		<a href="products/<%= product.name.toLowerCase() %>">
+		<a href="products/<%= product._id %>">
       		<h1><%= product.name %></h1>
 		</a>
         <canvas id="<%= product._id %>" width="300" height="300"></canvas>

@@ -1,11 +1,18 @@
 const Product = require("../models/product");
 
 const ProductsController = {
-  Index: async (req, res) => {
-    console.log("############## Now in ProductsController Index ##############")
-    const products = await Product.find().exec();
-
-    res.render("products/index", {products: products});
+  ID: async (req, res) => {
+    console.log("############# Now in ProductsController ID #################")
+    const productID = req.params.id;
+    let product = false;
+    try {
+      product = await Product.findById(productID).exec();
+      console.log(product);
+    } catch (error) {
+      
+    }
+  
+    res.render("products/index", {product: product});
   },
 
   New: (req, res) => {
