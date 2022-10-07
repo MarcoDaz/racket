@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(methodOverride("_method"));
+// app.use('/scripts', express.static(__dirname + 'public'));
 
 app.use(
   session({
@@ -71,5 +72,7 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render("error");
 });
+
+
 
 module.exports = app;
