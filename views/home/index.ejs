@@ -39,6 +39,7 @@
   </script>
   <script>
     const searchProducts = async (event) => {
+      // prevent page from reloading
       event.preventDefault();
       const searchTerm = event.target.searchTerm.value.trim();
 
@@ -48,7 +49,6 @@
       const apiUrl = event.target.action;
       const res = await fetch(`${apiUrl}?searchTerm=${searchTerm}`);
       const results = await res.json();
-      console.log(results)
 
       const productsDiv = document.getElementById("products");
       if (results.length > 0) {
