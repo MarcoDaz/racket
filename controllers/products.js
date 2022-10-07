@@ -9,6 +9,20 @@ const ProductsController = {
     res.json(products);
   },
   
+  Search: async (req, res) => {
+    console.log("###### Now in ./controllers/products Search ######");
+    const searchTerm = req.query.searchTerm.trim();
+
+    let results = null;
+    if (searchTerm) {
+      results = await Product.find({
+        name: new RegExp(searchTerm, "i"),
+      }).exec();
+    }
+    
+    res.json(results);
+  },
+
   ID: async (req, res) => {
     console.log("############# Now in ProductsController ID #################")
     const productID = req.params.id;
