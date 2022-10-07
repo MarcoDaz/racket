@@ -10,9 +10,8 @@ const ProductsController = {
       results = await Product.find({
         name: new RegExp(searchTerm, "i")
       }).exec();
-    }
+    };
     
-
     res.json(results || "No Search Term Given");
   },
 
