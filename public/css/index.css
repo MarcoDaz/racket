@@ -2,7 +2,7 @@
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
- @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+ @import url('googleapi.css');
 
 
 :root {
