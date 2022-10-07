@@ -1,6 +1,14 @@
 const Product = require("../models/product");
 
 const ProductsController = {
+  All: async (req, res) => {
+    console.log("###### Now in ./controllers/products All ######");
+
+    const products = await Product.find().exec();
+
+    res.json(products);
+  },
+  
   ID: async (req, res) => {
     console.log("############# Now in ProductsController ID #################")
     const productID = req.params.id;
@@ -21,11 +29,11 @@ const ProductsController = {
   },
 
   Create: (req, res) => {
-    console.log("############## Now in ProductsController Create ##############")
+    console.log("###### Now in ./controllers/products Create ######");
     const product = new Product(req.body);
     product.save();
-    res.status(201).redirect("/")
-  }
-}
+    res.status(201).redirect("/");
+  },
+};
 
 module.exports = ProductsController;

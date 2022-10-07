@@ -40,6 +40,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+cypress/screenshots
+cypress/videos
+
 
 # TypeScript v1 declaration files
 typings/
@@ -131,3 +134,4 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
