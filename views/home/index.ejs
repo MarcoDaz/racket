@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
               <!-- search form -->
-              <form action="/products/search" class="searchform order-lg-last" onSubmit="searchProducts(event)">
+              <form action="/products/search" class="searchform order-lg-last" onSubmit="fetchSearch(event)">
                 <div class="form-group d-flex">
                   <input type="text" name="searchTerm" class="form-control pl-3" placeholder="Search">
                   <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
@@ -80,52 +80,19 @@
 
   </section>
 
-  
+  <!-- container for products/search -->
+  <div id="products"></div>
 
-  <div id="products">
-    <% products.forEach(product => { %>
-    <h1><%= product.name %></h1>
-    <canvas id="<%= product._id %>" width="300" height="300"></canvas>
-    <% }) %>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="script.js"></script>
+  <script src="javascripts/chart.js"></script>
+  <script src="javascripts/applyChart.js"></script>
+  <script src="javascripts/createCharts.js"></script>
+  <script src="javascripts/fetchSearch.js"></script>
   <script>
-    const products = <%- JSON.stringify(products) %>
-    products.forEach(product => {
-      createChart(product)
+    fetch('/products/all')
+    .then(response => response.json())
+    .then((products) => {
+      createCharts(products, "products")
     });
-  </script>
-  <script>
-    const searchProducts = async (event) => {
-      // prevent page from reloading
-      event.preventDefault();
-      const searchTerm = event.target.searchTerm.value.trim();
-
-      // prevent empty searches
-      if (!searchTerm) return;
-
-      const apiUrl = event.target.action;
-      const res = await fetch(`${apiUrl}?searchTerm=${searchTerm}`);
-      const results = await res.json();
-
-      const productsDiv = document.getElementById("products");
-      if (results.length > 0) {
-        productsDiv.innerHTML = results.map((product) => {
-          return `
-            <h1>${product.name}</h1>
-            <canvas id="${product._id}" width="300" height="300"></canvas>
-          `
-        });
-
-        results.forEach(product => {
-          createChart(product)
-        });
-      } else {
-        productsDiv.innerHTML = "<h1>No products found</h1>"
-      }
-    }
   </script>
 </body>
 
