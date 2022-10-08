@@ -19,20 +19,17 @@
  /**
   * Connect to MongoDB
   **/
- const localUrl = "mongodb://0.0.0.0/racket";
- const mongodbUrl = "mongodb://0.0.0.0/racket?statusColor=686B6F&enviroment=local&name=racket&tLSMode=0&usePrivateKey=false&safeModeLevel=0&advancedSafeModeLevel=0&driverVersion=0";
+ const mongoLocal = "mongodb://0.0.0.0/racket";
+ const mongoAtlas = "mongodb+srv://racket:LoMhnquSS897iknl@racket.daksy1n.mongodb.net/test";
  
- try {
-   mongoose.connect(localUrl, {
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
-   });
- } catch (error) {
-   mongoose.connect(mongodbUrl, {
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
-   });
- }
+ const mongoUrl = process.argv.at(-1) === 'local' ?
+  mongoLocal :
+  mongoAtlas;
+
+ mongoose.connect(mongoUrl, {
+   useNewUrlParser: true,
+   useUnifiedTopology: true,
+ });
  
  var db = mongoose.connection;
  db.on("error", console.error.bind(console, "MongoDB connection error:"));
