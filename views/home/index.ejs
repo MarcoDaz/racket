@@ -73,6 +73,7 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
+          <div class="shopping-basket">Items Tracked <span id="shoppingBasketMessage"> is empty</span>.</div>
         </ul>
       </div>
     </nav>
@@ -81,12 +82,15 @@
   </section>
 
   <!-- container for products/search -->
-  <div id="products"></div>
 
+</body>
+
+  <div id="products" ></div>
   <script src="javascripts/chart.js"></script>
   <script src="javascripts/applyChart.js"></script>
   <script src="javascripts/createCharts.js"></script>
   <script src="javascripts/fetchSearch.js"></script>
+  <script src="javascripts/indexJSchartsBasket.js" defer></script>
   <script>
     fetch('/products/all')
     .then(response => response.json())
@@ -94,6 +98,6 @@
       createCharts(products, "products")
     });
   </script>
-</body>
+
 
 </html>
