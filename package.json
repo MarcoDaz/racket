@@ -6,6 +6,7 @@
     "lint": "eslint .",
     "start": "node ./bin/www atlas",
     "start:dev": "nodemon ./bin/www local",
+    "start:atlas": "nodemon ./bin/www atlas",
     "start:test": "PORT=3030 MONGODB_URL='mongodb://0.0.0.0/racket_test' npm start",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest",
