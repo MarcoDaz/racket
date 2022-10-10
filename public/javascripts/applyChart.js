@@ -10,8 +10,8 @@ const applyChart = (product) => {
     return yoke.price;
   });
 
-  const inflationRates = product.prices.map((yoke) => {
-    return yoke.inflation;
+  const inflationAdjustedPrice = product.prices.map((yoke) => {
+    return (yoke.price * ((yoke.inflation/100) + 1));
   });
 
   // dates for chart
@@ -39,7 +39,7 @@ const applyChart = (product) => {
         },
         {
           label: "Inflation rate",
-          data: inflationRates,
+          data: inflationAdjustedPrice,
           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           borderColor: ["rgba(155, 9, 232, 2)"],
           borderWidth: 3,
@@ -75,7 +75,7 @@ const applyChart = (product) => {
           type: 'linear',
           title: {
             display: true,
-            text: 'Inflation rate'
+            text: 'inflationAdjustedPrice in £'
           },
           position: 'right',
           grid: {
