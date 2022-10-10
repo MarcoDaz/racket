@@ -72,10 +72,11 @@ const applyChart = (product) => {
           type: 'linear',
           display: true,
           position: 'right',
+          grid: {
+            drawOnChartArea: false,
+          }
         },
-        grid: {
-          drawOnChartArea: false,
-        }
+        
       },
     },
   });
