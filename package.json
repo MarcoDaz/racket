@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "node ./bin/www",
+    "start": "node ./bin/www heroku",
     "start:dev": "nodemon ./bin/www",
     "start:test": "PORT=3030 MONGODB_URL='mongodb://0.0.0.0/racket_test' npm start",
-    "test": "jest --verbose",
+    "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest",
     "test:integration": "cypress run"
   },
