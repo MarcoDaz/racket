@@ -10,6 +10,21 @@ const applyChart = (product) => {
     return yoke.price;
   });
 
+  const inflationRates = [
+    {date:'2021_SEP', rate:	2.9},
+    {date:'2021_OCT', rate:	3.8},
+    {date:'2021_NOV', rate:	4.6},
+    {date:'2021_DEC', rate:	4.8},
+    {date:'2022_JAN', rate:	4.9},
+    {date:'2022_FEB', rate:	5.5},
+    {date:'2022_MAR', rate:	6.2},
+    {date:'2022_APR', rate:	7.8},
+    {date:'2019_MAY', rate:	7.9},
+    {date:'2022_JUN', rate:	8.2},
+    {date:'2022_JUL', rate:	8.8},
+    {date:'2022_AUG', rate:	8.6},
+  ]
+
   // dates for chart
   const productDates = product.prices.map((yoke) => {
     const options = { year: "numeric", month: "long" };
@@ -31,12 +46,27 @@ const applyChart = (product) => {
           borderWidth: 3,
           tension: 0.5,
           pointHoverRadius: 10,
+          yAxisID: 'y',
         },
+        {
+          labels: "Inflation rate",
+          data: inflationRates.map((yoke) => {return yoke.rate}),
+          backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+          borderColor: ["rgba(155, 9, 232, 2)"],
+          borderWidth: 3,
+          tension: 0.5,
+          pointHoverRadius: 10,
+          yAxisID: 'y1',
+        }
       ],
     },
     options: {
       responsive: false,
       maintainAspectRatio: true,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
       plugins: {
         legend: {
           display: false,
@@ -44,8 +74,18 @@ const applyChart = (product) => {
       },
       scales: {
         y: {
-          beginAtZero: false,
+          type: 'linear',
+          display: true,
+          position: 'left',
         },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+        },
+        grid: {
+          drawOnChartArea: false,
+        }
       },
     },
   });
