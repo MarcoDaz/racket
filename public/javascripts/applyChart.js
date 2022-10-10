@@ -65,12 +65,18 @@ const applyChart = (product) => {
       scales: {
         y: {
           type: 'linear',
-          display: true,
+          title: {
+            display: true,
+            text: 'Price in £'
+          },
           position: 'left',
         },
         y1: {
           type: 'linear',
-          display: true,
+          title: {
+            display: true,
+            text: 'Inflation rate'
+          },
           position: 'right',
           grid: {
             drawOnChartArea: false,
