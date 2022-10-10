@@ -31,7 +31,7 @@
         <div class="col-md-8 order-md-last">
           <div class="row">
             <div class="col-md-6 text-center">
-              <a class="navbar-brand" href="/">Racket<span>save your money</span></a>
+              <a class="navbar-brand" id="Toggle" href="/">Racket<span>save your money</span></a>
             </div>
             <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
               <!-- search form -->
@@ -52,6 +52,12 @@
               <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
               <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">balls</i></span></a>
             </p>
+                 <div>
+                <label class="switch">
+                  <input type="checkbox" id="dark">
+                  <span class="slider round"></span>
+                </label>
+              </div>
           </div>
         </div>
       </div>
@@ -71,9 +77,12 @@
           </ul>
         </div>
         <ul class="navbar-nav">
+          <% if(!user)  {%>
           <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
-          <div class="shopping-basket">Items Tracked <span id="shoppingBasketMessage"> is empty</span>.</div>
+          <% } else  { %>
+            <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
+          <% } %>
         </ul>
       </div>
     </nav>
@@ -90,7 +99,7 @@
   <script src="javascripts/applyChart.js"></script>
   <script src="javascripts/createCharts.js"></script>
   <script src="javascripts/fetchSearch.js"></script>
-  <script src="javascripts/indexJSchartsBasket.js" defer></script>
+  <script src="javascripts/indexExtras.js" defer></script>
   <script>
     fetch('/products/all')
     .then(response => response.json())
