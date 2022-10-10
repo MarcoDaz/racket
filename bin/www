@@ -26,6 +26,8 @@
   mongoLocal :
   mongoAtlas;
 
+ console.log("Mongoose connecting to", process.argv.at(-1))
+
  mongoose.connect(mongoUrl, {
    useNewUrlParser: true,
    useUnifiedTopology: true,
