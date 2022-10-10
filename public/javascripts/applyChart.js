@@ -10,20 +10,9 @@ const applyChart = (product) => {
     return yoke.price;
   });
 
-  const inflationRates = [
-    {date:'2021_SEP', rate:	2.9},
-    {date:'2021_OCT', rate:	3.8},
-    {date:'2021_NOV', rate:	4.6},
-    {date:'2021_DEC', rate:	4.8},
-    {date:'2022_JAN', rate:	4.9},
-    {date:'2022_FEB', rate:	5.5},
-    {date:'2022_MAR', rate:	6.2},
-    {date:'2022_APR', rate:	7.8},
-    {date:'2019_MAY', rate:	7.9},
-    {date:'2022_JUN', rate:	8.2},
-    {date:'2022_JUL', rate:	8.8},
-    {date:'2022_AUG', rate:	8.6},
-  ]
+  const inflationRates = product.prices.map((yoke) => {
+    return yoke.inflation;
+  })
 
   // dates for chart
   const productDates = product.prices.map((yoke) => {
@@ -49,8 +38,8 @@ const applyChart = (product) => {
           yAxisID: 'y',
         },
         {
-          labels: "Inflation rate",
-          data: inflationRates.map((yoke) => {return yoke.rate}),
+          label: "Inflation rate",
+          data: inflationRates,
           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           borderColor: ["rgba(155, 9, 232, 2)"],
           borderWidth: 3,
@@ -69,7 +58,7 @@ const applyChart = (product) => {
       },
       plugins: {
         legend: {
-          display: false,
+          display: true,
         },
       },
       scales: {
