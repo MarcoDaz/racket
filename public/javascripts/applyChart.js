@@ -12,7 +12,7 @@ const applyChart = (product) => {
 
   const inflationRates = product.prices.map((yoke) => {
     return yoke.inflation;
-  })
+  });
 
   // dates for chart
   const productDates = product.prices.map((yoke) => {
@@ -56,6 +56,7 @@ const applyChart = (product) => {
         mode: 'index',
         intersect: false,
       },
+      stacked: false,
       plugins: {
         legend: {
           display: true,
