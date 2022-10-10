@@ -8380,3 +8380,10 @@ h1, h2, h3, h4, h5,
   border: 1px solid rgba(0, 0, 0, 0.1); }
   .form-control:focus, .form-control:active {
     border-color: #000; }
+
+    /* each chart div */
+.product-container{ display: inline-block; margin: 10px;
+  text-align: center;
+  border: 1px solid #e4e4e4;
+  padding: 10px; background-color: #f4f4f4;
+  width: 250px; }
