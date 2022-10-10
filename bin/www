@@ -21,8 +21,10 @@
   **/
  const mongoLocal = "mongodb://0.0.0.0/racket";
  const mongoAtlas = "mongodb+srv://racket:LoMhnquSS897iknl@racket.daksy1n.mongodb.net/test";
- 
- const mongoUrl = mongoLocal
+  
+ const mongoUrl = process.argv.at(-1) === 'local' ?
+  mongoLocal :
+  mongoAtlas;
 
 
  mongoose.connect(mongoUrl, {
