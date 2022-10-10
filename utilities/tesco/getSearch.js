@@ -1,7 +1,7 @@
 const axios = require("axios");
 const getScriptContent = require('./getScriptContent');
 const getProduct = require('./getProduct');
-const Product = require('../models/product')
+const Product = require('../../models/product')
 
 const getUrlsBySearch = async (searchTerm, page = 1) => {
   try {
@@ -57,14 +57,14 @@ const getAllProductsBySearch = async (searchTerm) => {
 }
 
 // EXAMPLE: returns 14 items on 05/10/2022
-// getAllUrlsBySearch('salt snack').then(result => {
-//   console.log(result);
-//   console.log('length:', result.length);
-// });
+getAllUrlsBySearch('salt snack').then(result => {
+  console.log(result);
+  console.log('length:', result.length);
+});
 
 // EXAMPLE: returns 14 items on 05/10/2022
-getAllProductsBySearch('salt snack').then(result => {
-  console.log(result);
-});
+// getAllProductsBySearch('salt snack').then(result => {
+//   console.log(result);
+// });
 
 module.exports = getAllProductsBySearch;

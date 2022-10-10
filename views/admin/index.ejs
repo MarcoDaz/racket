@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin-Tesco</title>
+</head>
+<body>
+  <!-- Currently Tracked Products -->
+  <section>
+    <h1>Tracked Products</h1>
+    <div id="tracked-products"></div>
+  </section>
+
+  <!-- Search for Tesco Products to track -->
+  <section>
+    <h1>Tesco Products:</h1>
+    <form onsubmit="fetchTescoSearch(event)">
+      <input type="text" name="tescoSearchTerm" placeholder="Search">
+      <input type="submit" value="Find">
+    </form>
+    <div id="tesco-search-pages"></div>
+    <div id="tesco-products"></div>
+  </section>
+</body>
+</html>
+
+<script>
+  // replace div tracked-products
+  // 1. get all products
+  // 2. filter for products with a tescoId
+  // 3. display: name, image, tescoId, prices
+</script>
+
+<script>
+  let tescoUrls = [];
+  const fetchTescoSearch = async (event) => {
+    event.preventDefault();
+    const searchTerm = event.target.tescoSearchTerm.value;
+
+    
+  };
+</script>

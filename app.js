@@ -12,7 +12,7 @@ const homeRouter = require("./routes/home");
 const usersRouter = require("./routes/users");
 const sessionsRouter = require("./routes/sessions");
 const productsRouter = require("./routes/products");
-
+const adminRouter = require("./routes/admin")
 
 const app = express();
 
@@ -53,6 +53,7 @@ app.use(expressLayouts);
 
 // route setup
 app.use("/", homeRouter);
+app.use("/admin", adminRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/products", productsRouter);
