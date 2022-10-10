@@ -2,10 +2,13 @@ const createCharts = (products, htmlId) => {
   // create canvases
   const container = document.getElementById(htmlId);
   const html = products.map((product) => (`
+  <div class="product-container">
     <a href="products/${product._id}">
-      <h1>${product.name}</h1>
+      <h4>${product.name}</h4>
     </a>
-    <canvas id="${product._id}" width="300" height="300"></canvas>
+    <canvas id="${product._id}" width="239" height="320" ></canvas>
+    <button class="add-to-cart" data-product-name="${product.name}">Track</button>
+  </div>
   `));
   container.innerHTML = html;
 
