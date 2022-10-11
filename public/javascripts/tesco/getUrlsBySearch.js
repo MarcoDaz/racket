@@ -5,6 +5,7 @@ const getUrlsBySearch = async (searchTerm, page = 1) => {
   try {
     const apiUrl = `https://www.tesco.com/groceries/en-GB/search?query=${searchTerm}&page=${page}`;
 
+    console.log("marcodaz")
     const response = await axios.get(apiUrl);
     const htmlString = response.data;
     const responseObj = getScriptContent(htmlString);
