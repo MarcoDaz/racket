@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <link rel="stylesheet" href="/css/index.css">
+
     <title>title </title>
 </head>
 <body>
     
     <% if (product) { %>
         <h1><%= product.name %> </h1>
-        <h1>current price: <%= product.prices.at(-1).price %> </h1>
+        <h1>current price: £<%= product.prices.at(-1).price %> </h1>
             <h3>Added: <%= product.prices.at(-1).date %> </h3>
             
-            <h3>This was priced lowest at: <%= lowestPrice.price %> on <%= lowestPrice.date %> </h3>
-            <h3>... and was priced highest at: <%= highestPrice.price %> on <%= highestPrice.date %> </h3>
+            <h3>This was priced lowest at: £<%= lowestPrice.price %> on <%= lowestPrice.date %> </h3>
+            <h4>...and was priced highest at: £<%= highestPrice.price %> on <%= highestPrice.date %> </h4>
+            <h4>The difference between the last month is £ </h4>
 
-            <canvas id="<%= product._id %>"> </canvas>
+            <div class="products">
+            <canvas id="<%= product._id %>" width="239" height="320"> </canvas>
+
             <script src="/javascripts/chart.js"></script>
             <script src="/javascripts/applyChart.js"></script>
                 <script>
                     const product = <%- JSON.stringify(product) %> 
                     applyChart(product)
                 </script>
+            </div>
+
                 
     <% } else { %>
         <h1>not found</h1>
