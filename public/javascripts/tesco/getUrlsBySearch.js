@@ -15,7 +15,7 @@ const getUrlsBySearch = async (searchTerm, page = 1) => {
 
     return urls;
   } catch (error) {
-    return null;
+    return [];
   }
 };
 

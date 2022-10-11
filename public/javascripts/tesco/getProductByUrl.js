@@ -13,12 +13,10 @@ const getProductByUrl = async (apiUrl) => {
       name: product.name,
       images: product.image,
       description: product.description,
-      prices: [
-        {
-          price: product.offers.price,
-          date: Date.now()
-        }
-      ]
+      price: {
+        value: product.offers.price,
+        date: Date.now()
+      }
     }
   
     console.log(`Found ${product.sku} -  ${product.name}`);
