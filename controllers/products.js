@@ -27,14 +27,22 @@ const ProductsController = {
     console.log("############# Now in ProductsController ID #################")
     const productID = req.params.id;
     let product = false;
+    let sortByPrice;
+    let change;
     try {
       product = await Product.findById(productID).exec();
-      console.log(product);
+      sortByPrice = product.prices.slice().sort((priceObj1, priceObj2) => {
+        return priceObj1.price - priceObj2.price
+      } )
+
+      change = (product.prices[product.prices.length - 1].price - product.prices[0].price) / product.prices[0].price * 100
+
+      //console.log(sortByPrice.map(obj => obj.price));
     } catch (error) {
       
     }
-  
-    res.render("products/index", {product: product});
+    
+    res.render("products/index", {product: product, change: change, lowestPrice: sortByPrice[0], highestPrice: sortByPrice[sortByPrice.length - 1]});
   },
 
   New: (req, res) => {
