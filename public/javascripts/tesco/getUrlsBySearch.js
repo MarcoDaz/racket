@@ -8,6 +8,7 @@ const getUrlsBySearch = async (searchTerm, page = 1) => {
     console.log("marcodaz")
     const response = await axios.get(apiUrl);
     const htmlString = response.data;
+    console.log(htmlString)
     const responseObj = getScriptContent(htmlString);
 
     const urls = responseObj
