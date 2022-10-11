@@ -6,11 +6,19 @@
   <title>Admin</title>
 </head>
 <body>
-  <form onsubmit="fetchTesco(event)">
-    <input type="text" name="searchTerm" placeholder="..Search">
-    <input type="submit" value="Search">
-  </form>
-  <div id="tesco-results"></div>
+  <section>
+    <form action="fetchTescoProducts(event)" method="get">
+
+    </form>
+  </section>
+
+  <section>
+    <form onsubmit="fetchTesco(event)">
+      <input type="text" name="searchTerm" placeholder="..Search">
+      <input type="submit" value="Search">
+    </form>
+    <div id="tesco-container"></div>
+  </section>
 
   <script src="/javascripts/tesco/fetchTesco.js"></script>
 </body>
