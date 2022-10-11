@@ -48,7 +48,7 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
-app.use(expressLayouts);
+//app.use(expressLayouts);
 
 
 // route setup
