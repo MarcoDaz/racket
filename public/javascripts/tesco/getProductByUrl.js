@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 const getScriptContent = require("./getScriptContent");
 
 const getProductByUrl = async (apiUrl) => {
