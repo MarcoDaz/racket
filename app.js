@@ -64,7 +64,8 @@ app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/products", productsRouter);
-app.use("/admin", adminChecker, adminRouter);
+app.use("/admin", adminRouter);
+// app.use("/admin", adminChecker, adminRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
