@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 const getScriptContent = require("./getScriptContent");
 
 const getUrlsBySearch = async (searchTerm, page = 1) => {
