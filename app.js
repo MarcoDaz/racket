@@ -48,6 +48,14 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
+const adminChecker = (req, res, next) => {
+  if (req.session.user && req.session.user.admin) {
+    next();
+  } else {
+    res.redirect("/")
+  }
+}
+
 app.use(expressLayouts);
 
 
@@ -56,7 +64,7 @@ app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/products", productsRouter);
-app.use("/admin", adminRouter);
+app.use("/admin", adminChecker, adminRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
