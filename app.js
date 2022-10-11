@@ -4,7 +4,7 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const session = require("express-session");
+const session = require("cookie-session");
 const methodOverride = require("method-override");
 
 // import routers
