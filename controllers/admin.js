@@ -10,7 +10,7 @@ const AdminController = {
   },
   TescoUrls: async (req, res) => {
     const searchTerm = req.query.searchTerm.trim();
-    const page = req.query.page;
+    const page = req.query.page ? req.query.page : 1;
     
     console.log("Searching for:", searchTerm)
     const tescoUrls = await getUrlsBySearch(searchTerm, page);
