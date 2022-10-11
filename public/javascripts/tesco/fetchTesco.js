@@ -19,22 +19,49 @@ const fetchTescoObjects = async (urlArr) => {
       return tescoObj;
     })
   );
-  
-  console.log(tescoObjects)
+    
   return tescoObjects;
 }
-
+  
 // State
 const tescoProducts = {};
+let tescoPage = 1;
 let tescoSearch = []
+  
+const createTescoHtml = async (products) => {
+  const tescoHtml = await Promise.all(products.map(async (product) => {
+    let html = `
+      <div>
+      <img src="${product.images[0]}" alt="${product.name} image">
+      <h5>${product.name}</h5>
+      <h6>Price: <strong>£ ${product.price.value}</strong></h6>
+      <h6>${product.description}</h6>
+    `.trim();
+
+    const isTracked = await fetch(`/admin/tracked?tescoId=${product.tescoId}`).then(res => res.json());
+    
+    if (!isTracked) {
+      html += `<button onclick="track(event, ${product.tescoId})">Track</button>`
+    } else {
+      html += "<p><em>Tracked!</em></p>"
+    }
+    
+    return html + "</div>";
+  }));
+
+  return tescoHtml;
+}
 
 // onsubmit fetchTesco(event)
 const fetchTesco = async (event) => {
   event.preventDefault();
-  const searchTerm = event.target.searchTerm.value;
+  const searchTerm = event.target.searchTerm.value.trim();
+  if (searchTerm.length < 1) return;
+
+  tescoPage = 1;
+  tescoSearchTerm = searchTerm;
   
   const tescoUrls = await fetchTescoUrls(searchTerm);
-  console.log("Found", tescoUrls.length)
   resultsDiv = document.getElementById("tesco-container");
 
   // if no results
@@ -47,35 +74,10 @@ const fetchTesco = async (event) => {
   tescoSearch = tescoUrls;
   const first5 = await fetchTescoObjects(tescoSearch.splice(0, 5));
 
-  const createTescoHtml = async (products) => {
-    const tescoHtml = await Promise.all(products.map(async (product) => {
-      let html = `
-        <div>
-        <img src="${product.images[0]}" alt="${product.name} image">
-        <h5>${product.name}</h5>
-        <h6>Price: <strong>£ ${product.price.value}</strong></h6>
-        <h6>${product.description}</h6>
-      `.trim();
-
-      const isTracked = await fetch(`/admin/tracked?tescoId=${product.tescoId}`).then(res => res.json());
-      
-      if (!isTracked) {
-        console.log("HELLLO")
-        html += `<button onclick="track(event, ${product.tescoId})">Track</button>`
-      } else {
-        console.log(isTracked)
-        html += "<p><em>Tracked!</em></p>"
-      }
-      
-      return html + "</div>";
-    }));
-
-    return tescoHtml;
-  }
 
   // tesco search results
   const isTrackedHtmlArr = await createTescoHtml(first5);
-  const productsHtml =  isTrackedHtmlArr.join("");
+  const productsHtml =  `<div id="tesco-results">${isTrackedHtmlArr.join("")}</div>`
   
   const loadMoreHtml = `
     </br>
@@ -93,14 +95,35 @@ const fetchTesco = async (event) => {
 }
 
 const loadMoreTesco = async (event) => {
+  // get next 5 urls => products
+  const next5 = await fetchTescoObjects(tescoSearch.splice(0, 5));
+  const tescoHtml = await createTescoHtml(next5);
+  const resultsDiv = document.getElementById("tesco-results");
+  resultsDiv.innerHTML += tescoHtml;
+
+  // save to tescoProducts state
+  console.log(next5.length)
+  next5.forEach((product) => {
+    tescoProducts[product.tescoId] = product;
+  })
+
+  if (tescoSearch.length < 5) {
+    tescoPage++
+    const newUrls = await fetchTescoUrls(tescoSearchTerm, tescoPage);
+    tescoSearch = tescoSearch.concat(newUrls);
+  }
   
+  // if tescoSearch < 1 change button to 'no more'
+  if (tescoSearch < 1) {
+    const loadMoreTescoButton = document.getElementById("loadMoreTesco");
+    loadMoreTescoButton.outerHTML = `<strong>No more products</strong>`;
+  }
 }
 
 const track = async (event, tescoId) => {
   event.target.outerHTML = "<p><em>Tracked!</em></p>";
 
   const tescoObj = tescoProducts[tescoId];
-  console.log(tescoObj)
 
   const options = {
     method: "POST",

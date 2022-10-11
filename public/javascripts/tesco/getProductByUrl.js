@@ -24,13 +24,13 @@ const getProductByUrl = async (apiUrl) => {
     return neatProduct;
 
   } catch (error) {
-    console.log(`${tesco_id} not found`);
+    console.log(`${apiUrl} not found`);
     return null;
   };
 };
 
 const getProductById = async (tesco_id) => {
-  const apiUrl  = `https://www.tesco.com/groceries/en-GB/products/${tesco_id}`;
+  const apiUrl  = `https://www.tesco.com/groceries/en-GB/products/${tescoId}`;
   const product = await getProductByUrl(apiUrl);
 
   return product;
