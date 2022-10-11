@@ -72,11 +72,11 @@ const fetchTesco = async (event) => {
 
   // else
   tescoSearch = tescoUrls;
-  const first5 = await fetchTescoObjects(tescoSearch.splice(0, 5));
+  const first10 = await fetchTescoObjects(tescoSearch.splice(0, 10));
 
 
   // tesco search results
-  const isTrackedHtmlArr = await createTescoHtml(first5);
+  const isTrackedHtmlArr = await createTescoHtml(first10);
   const productsHtml =  `<div id="tesco-results">${isTrackedHtmlArr.join("")}</div>`
   
   const loadMoreHtml = `
@@ -89,25 +89,24 @@ const fetchTesco = async (event) => {
   resultsDiv.innerHTML = productsHtml + loadMoreHtml;
 
   // save to state for reference
-  first5.forEach((product) => {
+  first10.forEach((product) => {
     tescoProducts[product.tescoId] = product;
   })
 }
 
 const loadMoreTesco = async (event) => {
-  // get next 5 urls => products
-  const next5 = await fetchTescoObjects(tescoSearch.splice(0, 5));
-  const tescoHtml = await createTescoHtml(next5);
+  // get next 10 urls => products
+  const next10 = await fetchTescoObjects(tescoSearch.splice(0, 10));
+  const tescoHtml = await createTescoHtml(next10);
   const resultsDiv = document.getElementById("tesco-results");
   resultsDiv.innerHTML += tescoHtml;
 
   // save to tescoProducts state
-  console.log(next5.length)
-  next5.forEach((product) => {
+  next10.forEach((product) => {
     tescoProducts[product.tescoId] = product;
   })
 
-  if (tescoSearch.length < 5) {
+  if (tescoSearch.length < 10) {
     tescoPage++
     const newUrls = await fetchTescoUrls(tescoSearchTerm, tescoPage);
     tescoSearch = tescoSearch.concat(newUrls);
