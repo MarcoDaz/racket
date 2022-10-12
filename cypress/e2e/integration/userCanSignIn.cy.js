@@ -13,6 +13,6 @@ describe("Authentication", () => {
     cy.get("#signedUpsubmit").click();
 
     cy.url().should("include", "/");
-    cy.contains("h1", "Butter");
+    cy.contains("h4", "Butter");
   });
 });
