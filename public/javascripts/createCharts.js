@@ -4,7 +4,7 @@ const createCharts = async (products, htmlId) => {
   const html = await Promise.all(
     products.map(async (product) => (`
       <div class="product-container">
-        <a href="products/${product._id}">
+        <a href="products/${product._id}" data-cy="product">
           <h4>${product.name}</h4>
         </a>
         <canvas id="${product._id}" width="239" height="320" ></canvas>
