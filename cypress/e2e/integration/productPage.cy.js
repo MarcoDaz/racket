@@ -2,13 +2,9 @@ describe("Navigating to product page", () => {
   it("A user selects a product from the homepage", () => {
     
     cy.visit("/");
-    cy.get("#href='products/633f3088e503050a36cf-'")
-      .invoke('attr', 'href')
-      .then(href => {
-        cy.visit(href);
-      });
+    cy.get('[data-cy="product"]').first().click()
     cy.url().should("include", "/products"); 
-    cy.contains("h1", "current price");
+    cy.contains("h1", "This was priced lowest at");
   });
 });
 
