@@ -1,3 +1,6 @@
+const phantom = require('phantom');
+const getInflation = require('../public/javascripts/inflationAPI.js');
+
 const HomeController = {
   Index: async (req, res) => {
     console.log("############## Now in HomeController Index ##############")
@@ -5,8 +8,9 @@ const HomeController = {
   },
   Inflation: async (req, res) => {
     console.log("############## Now in HomeController Inflation ##############")
-    
-    res.json(result)
+    const inflationInfo = await getInflation();
+
+    res.json({inflationInfo: inflationInfo});
   }
 }
 

@@ -8481,3 +8481,13 @@ canvas {
   display: block;
   width: 800px;
 }
+
+.inflationInfo-grid {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flexbox;
+  width: 1200px;
+}
