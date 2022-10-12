@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: String,
     basket: [{type: mongoose.Schema.Types.ObjectId, ref: "Basket"}],
+    admin: { type: Boolean, default: false}
 })
 
 const User = mongoose.model("User", UserSchema)
