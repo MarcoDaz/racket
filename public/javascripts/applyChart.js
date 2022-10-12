@@ -11,7 +11,7 @@ const applyChart = (product) => {
   });
 
   const inflationAdjustedPrice = product.prices.map((yoke) => {
-    return (yoke.price * ((yoke.inflation/100) + 1));
+    return (yoke.price * ((yoke.inflation/100) + 1)); // should be inflation of the previous month
   });
 
   // dates for chart
@@ -38,14 +38,14 @@ const applyChart = (product) => {
           yAxisID: 'y',
         },
         {
-          label: "Inflation rate",
+          label: "Inflation Adjusted Price",
           data: inflationAdjustedPrice,
           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           borderColor: ["rgba(155, 9, 232, 2)"],
           borderWidth: 3,
           tension: 0.5,
           pointHoverRadius: 10,
-          yAxisID: 'y1',
+          yAxisID: 'y',
         }
       ],
     },
@@ -71,17 +71,17 @@ const applyChart = (product) => {
           },
           position: 'left',
         },
-        y1: {
-          type: 'linear',
-          title: {
-            display: true,
-            text: 'inflationAdjustedPrice in £'
-          },
-          position: 'right',
-          grid: {
-            drawOnChartArea: false,
-          }
-        },
+        // y1: {
+        //   type: 'linear',
+        //   title: {
+        //     display: true,
+        //     text: 'inflationAdjustedPrice in £'
+        //   },
+        //   position: 'right',
+        //   grid: {
+        //     drawOnChartArea: false,
+        //   }
+        // },
         
       },
     },
