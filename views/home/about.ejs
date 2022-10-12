@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
-    <link rel="stylesheet" href="/css/index.css">
-
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
-
-    <title>Product | <%= product.name %></title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>About us</title>
 </head>
 <body>
     <section class="ftco-section">
@@ -69,49 +67,56 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
               <ul class="navbar-nav m-auto">
                 <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/products/all" class="nav-link">products</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About us</a></li>
+                <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
     
               </ul>
             </div>
             <ul class="navbar-nav">
+              <% if(!user)  {%>
               <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
               <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
-
+              <% } else  { %>
+                <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
+              <% } %>
             </ul>
           </div>
         </nav>
         <!-- END nav -->
     
-      </section>
+    <h1>About Racket</h1>
+    <h4>Racket is a website that allows users to see the prices of groceries over time, and see how that tracks with the rates of inflaiton</h4>
     
-    <% if (product) { %>
-        <h1><%= product.name %> </h1>
-        <div class="product-grid">
-            <p class="product-info">
-                <canvas id="<%= product._id %>" width="400" height="300"> </canvas>
-                Current price: £<%= product.prices.at(-1).price.toFixed(2) %><br />
-                Added: <%= product.prices.at(0).date.toLocaleDateString() %>
-            </p>
-            
-            <h1 class="product-history">
-                This was priced lowest at: <strong>£<%= lowestPrice.price.toFixed(2) %></strong> on <%= lowestPrice.date.toLocaleDateString() %> <br />
-                ...and was priced highest at: <strong>£<%= highestPrice.price.toFixed(2) %></strong> on <%= highestPrice.date.toLocaleDateString() %><br />
-                <% priceDiff = product.prices.at(-1).price - product.prices.at(-2).price %><br />
-                The difference between the last month is <strong>£<%= priceDiff.toFixed(2) %></strong><br />
-                ...and the price has increased by <strong><%= change.toFixed(2) %>%</strong> since <%= product.prices.at(0).date.toLocaleDateString() %>  
-            </h1>
-        </div>
-                
-    <% } else { %>
-        <h1>not found</h1>
-    <% } %>
-    
+    <ul>
+
+        <h1>Useful links</h1>
+
+        <li><a href="/">Goes to homepage</a></li>
+                    <li><a href="/about">Goes to about page (here!)</a></li>
+
+                    <li><a href="products/all">All Products</a></li>
+                    <li><a href="products/search">Post request for a search query that allows the user to find products</a></li>
+                    <li><a href="products/new">Page that allows user to create a product</a></li>
+                    <li><a href="products/create">Post request to create a product</a></li>
+                    <li><a href="products/:id">Gets the id of a specific product</a></li>
+
+                    <li><a href="sessions/new">Creates a new user session</a></li>
+                    <li><a href="sessions/">Post request to send the new session information</a></li>
+                    <li><a href="sessions/delete">Deletes a user session</a></li>
+
+                    <li><a href="users/new">Page to create new user</a></li>
+                    <li><a href="users/">Post request that creates new user</a></li>
+
+                    
+
+                    <h1>Admin access only</h1>
+                    <li><a href="admin/">Admin Home</a></li>
+                    <li><a href="admin/tescoUrls">Tesco Urls</a></li>
+                    <li><a href="admin/tescoObj">Tesco Objects</a></li>
+                    <li><a href="admin/track">Track products</a></li>
+                    <li><a href="admit/tracked">View tracked products</a></li>
+
+    </ul>
+
 </body>
-<script src="/javascripts/chart.js"></script>
-<script src="/javascripts/applyChart.js"></script>
-<script>
-    const product = <%- JSON.stringify(product) %> 
-    applyChart(product)
-</script>
 </html>
