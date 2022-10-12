@@ -38,24 +38,27 @@ const BasketController = {
       userId,
       { $push: { basket: productId } },
       { returnDocument: "after" }
-    );
-
+    ).exec();
+    
     // redirect to fetch array of product objects
-    res.status(201).redirect("/basket/all");
+    res.status(201).redirect("/basket/objects")
   },
 
   Remove: async (req, res) => {
     // remove productId from basket
     const userId = req.session.user._id;
     const productId = req.body.productId;
+    console.log("user", userId)
+    console.log("product", productId)
     const user = await User.findByIdAndUpdate(
       userId,
-      { $pullAll: { basket: productId } },
+      { $pullAll: { basket: [productId] } },
       { returnDocument: "after" }
-    );
+    ).exec();
+    console.log(user);
 
     // redirect to fetch array of product objects
-    res.status(201).redirect("/basket/all");
+    res.status(201).redirect("/basket/objects")
   }
   
 }
