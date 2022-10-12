@@ -1,23 +1,5 @@
 
 
-// fetch('https://tradingeconomics.com/united-kingdom/core-inflation-rate')
-//   .then(res => res.json())
-//   .then(data => console.log(data))
-
-
-// axios.get('https://tradingeconomics.com/united-kingdom/core-inflation-rate')
-//   .then(function (response) {
-//     // handle success
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error);
-//   })
-//   .then(function () {
-//     // always executed
-//   });
-
 const phantom = require('phantom');
 
 const getInflation = async () => {
@@ -41,7 +23,7 @@ const getInflation = async () => {
     const index_4 = slice.indexOf(`<tr class="datatable-row-alternating">`)
     // console.log(slice.includes(`<a href="/united-kingdom/inflation-cpi">`));
 
-    const slice_2 = slice.slice(index_3, index_4)
+    // const slice_2 = slice.slice(index_3, index_4)
     return(slice_2)
 };
 
