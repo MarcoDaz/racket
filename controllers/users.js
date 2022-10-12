@@ -11,6 +11,15 @@ const UsersController = {
     const user = new User(req.body);
     user.save();
     res.status(201).redirect("/")
+  },
+
+  LoginStatus: (req, res) => {
+    console.log("Checking if logged in");
+    
+    const user = req.session.user;
+    const isLoggedIn = user ? true : false;
+
+    res.json(isLoggedIn);
   }
 }
 

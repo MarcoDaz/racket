@@ -57,9 +57,6 @@ const adminChecker = (req, res, next) => {
   }
 }
 
-//app.use(expressLayouts);
-
-
 // route setup
 app.use("/", homeRouter);
 app.use("/users", usersRouter);
