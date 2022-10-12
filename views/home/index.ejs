@@ -70,9 +70,9 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav m-auto">
-            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">products</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About us</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
 
           </ul>
         </div>
@@ -90,8 +90,26 @@
 
   </section>
 
+  <div class="inflationInfo-grid">
+  <h3>What is inflation?</h3>
+  <h4>And how is it calculated?</h4>
+  <p>
+    Imagine your shopping basket contains 10 items. If those 10 items all go up in price by 10 percent, then the cost has been "inflated" by 10%.
+    In actual fact, around 100,000 prices are found for roughly 520 items from all categories, across 150 locations in the UK.
+    These are compared with the price of the same products from last year, and the percentage increase/decrease is calculated.
+  </p>
+  <h4>This is inflation!</h4>
+  <p>
+    Currently the rate of inflation is at 9.9%.
+    <!-- would be nice if this number was collected from the inflationAPI.js -->
+  </p>
+  <h4>What does this mean for me?</h4>
+  <p>
+    This means that your hard-earned money can now buy 9.9% less of the same products as last year...
+    <b>OR</b> your average shopping basket has increased in price by around 9.9%!
+  </p>
+</div>
   <!-- container for products/search -->
-
 </body>
   
   <div id="my-basket"></div>
@@ -115,5 +133,10 @@
     });
   </script>
 
+  <!-- <script>
+    fetch('/inflation')
+    .then(response => response)
+    .then(console.log(response))
+  </script> -->
 
 </html>

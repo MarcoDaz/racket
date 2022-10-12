@@ -38,14 +38,14 @@ const applyChart = (product) => {
           yAxisID: 'y',
         },
         {
-          label: "Inflation rate",
+          label: "Inflation adjusted price",
           data: inflationAdjustedPrice,
           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           borderColor: ["rgba(155, 9, 232, 2)"],
           borderWidth: 3,
           tension: 0.5,
           pointHoverRadius: 10,
-          yAxisID: 'y1',
+          yAxisID: 'y',
         }
       ],
     },
@@ -71,17 +71,7 @@ const applyChart = (product) => {
           },
           position: 'left',
         },
-        y1: {
-          type: 'linear',
-          title: {
-            display: true,
-            text: 'inflationAdjustedPrice in £'
-          },
-          position: 'right',
-          grid: {
-            drawOnChartArea: false,
-          }
-        },
+
         
       },
     },
