@@ -1,6 +1,3 @@
-
-const { restart } = require("nodemon");
-
 const phantom = require('phantom');
 const getInflation = require('../public/javascripts/inflationAPI.js');
 
