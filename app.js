@@ -13,6 +13,7 @@ const usersRouter = require("./routes/users");
 const sessionsRouter = require("./routes/sessions");
 const productsRouter = require("./routes/products");
 const adminRouter = require("./routes/admin");
+const basketRouter = require("./routes/basket");
 
 const app = express();
 
@@ -56,15 +57,13 @@ const adminChecker = (req, res, next) => {
   }
 }
 
-//app.use(expressLayouts);
-
-
 // route setup
 app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/products", productsRouter);
 app.use("/admin", adminChecker, adminRouter);
+app.use("/basket", basketRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

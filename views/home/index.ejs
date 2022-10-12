@@ -111,8 +111,15 @@
 </div>
   <!-- container for products/search -->
 </body>
-
+  
+  <div id="my-basket"></div>
   <div id="products" ></div>
+   
+  <script>
+    const isLoggedIn = <%- user %>
+  </script>
+  <script src="javascripts/basket/fetchBasket.js"></script>
+  <script src="javascripts/basket/homeIndex.js"></script>
   <script src="javascripts/chart.js"></script>
   <script src="javascripts/applyChart.js"></script>
   <script src="javascripts/createCharts.js"></script>
