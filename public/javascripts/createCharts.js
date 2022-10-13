@@ -13,7 +13,7 @@ const createCharts = async (products, htmlId) => {
     `))
   );
 
-  container.innerHTML = html;
+  container.innerHTML = html.join("");
 
   // create charts
   products.forEach((product) => {
