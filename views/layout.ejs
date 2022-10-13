@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="/css/index.css">
   <title></title>
 </head>
 
@@ -61,17 +61,17 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav m-auto">
           <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="/products/list" class="nav-link">Products</a></li>
           <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
 
         </ul>
       </div>
       <ul class="navbar-nav">
         <% if(!user)  {%>
-        <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sessions/new">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/users/new">Register</a></li>
         <% } else  { %>
-        <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sessions/delete">Log out</a></li>
         <% } %>
       </ul>
     </div>

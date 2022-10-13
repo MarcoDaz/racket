@@ -59,7 +59,7 @@ const ProductsController = {
 
   List: (req, res) => {
     console.log("###### Now in ProductsController List ######");
-    res.render("products/list", {title: "Products", user: req.session.user ? true : false });
+    res.render("products/list", {title: "Products", user: req.session.user ? true : false, layout: '../views/layout' });
   }
 };
 
