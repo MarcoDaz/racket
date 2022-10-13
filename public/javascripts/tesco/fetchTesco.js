@@ -31,11 +31,11 @@ let tescoSearch = []
 const createTescoHtml = async (products) => {
   const tescoHtml = await Promise.all(products.map(async (product) => {
     let html = `
-      <div>
-      <img src="${product.images[0]}" alt="${product.name} image">
-      <h5>${product.name}</h5>
-      <h6>Price: <strong>£ ${product.price.value}</strong></h6>
-      <h6>${product.description}</h6>
+      <div id="flex-container">
+        <img src="${product.images[0]}" alt="${product.name} image">
+        <h5>${product.name}</h5>
+        <h6>Price: <strong>£ ${product.price.value}</strong></h6>
+        <h6>${product.description}</h6>
     `.trim();
 
     const isTracked = await fetch(`/admin/tracked?tescoId=${product.tescoId}`).then(res => res.json());
