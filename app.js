@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const cors = require("cors");
 
 // import routers
 const homeRouter = require("./routes/home");
@@ -64,7 +65,7 @@ app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/products", productsRouter);
-app.use("/admin", adminChecker, adminRouter);
+app.use("/admin", adminChecker, cors(), adminRouter);
 app.use("/basket", basketRouter)
 
 // catch 404 and forward to error handler
