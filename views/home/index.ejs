@@ -1,142 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Document</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="css/index.css">
-
-</head>
-
 <body>
 
-  <section class="ftco-section">
-    <!-- <div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Welcome</h2>
-				</div>
-			</div>  maybe there will be an animation -->
-    </div>
+<div class="flex-container">
+<!-- ######### Inflation info starts ######### -->
+  <div class="flex-child">
+    <h3>What is inflation? &#128163</h3>
+    <h4>And how is it calculated? &#128184</h4>
+      <p>
+        Imagine your shopping basket contains <b>10 items</b>. If those 10 items <b>all</b> go up in price by 10 percent, then the cost has been "inflated" by 10%.
+        In actual fact, around <b>100,000</b> prices are found for roughly 520 items from all categories, across 150 locations in the UK.
+        These are compared with the price of the same products from last year, and the percentage increase/decrease is calculated.
+      </p>
+    <h4>This is inflation! &#128293</h4>
+      <p>
+        Currently the rate of inflation is at 9.9%.
+        <!-- would be nice if this number was collected from the inflationAPI.js -->
+      </p>
+    <h4>What does this mean for me? &#128585</h4>
+      <p>
+        This means that your hard-earned money can now buy 9.9% less of the same products as last year...
+        <b>OR</b> your average shopping basket has increased in price by around 9.9%!
+      </p>
+  </div>
+<!-- ######### Inflation info ends ######### -->
 
-    <div class="container-fluid px-md-5">
-      <div class="row justify-content-between">
-        <div class="col-md-8 order-md-last">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <a class="navbar-brand" id="Toggle" href="/">Racket<span>save your money</span></a>
-            </div>
-            <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
-              <!-- search form -->
-              <form action="/products/search" class="searchform order-lg-last" onSubmit="fetchSearch(event)">
-                <div class="form-group d-flex">
-                  <input type="text" name="searchTerm" class="form-control pl-3" placeholder="Search">
-                  <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex">
-          <div class="social-media">
-            <p class="mb-0 d-flex">
-              <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">balls</i></span></a>
-            </p>
-                 <div>
-                <label class="switch">
-                  <input type="checkbox" id="dark">
-                  <span class="slider round"></span>
-                </label>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container-fluid">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="fa fa-bars"></span> Menu
-        </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav m-auto">
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/products/list" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
-
-          </ul>
-        </div>
-        <ul class="navbar-nav">
-          <% if(!user)  {%>
-          <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
-          <% } else  { %>
-            <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
-          <% } %>
-        </ul>
-      </div>
-    </nav>
-    <!-- END nav -->
-
-  </section>
-
-  <div class="inflationInfo-grid">
-  <h3>What is inflation?</h3>
-  <h4>And how is it calculated?</h4>
-  <p>
-    Imagine your shopping basket contains 10 items. If those 10 items all go up in price by 10 percent, then the cost has been "inflated" by 10%.
-    In actual fact, around 100,000 prices are found for roughly 520 items from all categories, across 150 locations in the UK.
-    These are compared with the price of the same products from last year, and the percentage increase/decrease is calculated.
-  </p>
-  <h4>This is inflation!</h4>
-  <p>
-    Currently the rate of inflation is at 9.9%.
-    <!-- would be nice if this number was collected from the inflationAPI.js -->
-  </p>
-  <h4>What does this mean for me?</h4>
-  <p>
-    This means that your hard-earned money can now buy 9.9% less of the same products as last year...
-    <b>OR</b> your average shopping basket has increased in price by around 9.9%!
-  </p>
+<!-- ######### Product graph starts ######### -->
+  <div class="flex-child">
+    <% if (product) { %>
+      <p class="product-info">
+          <canvas id="<%= product._id %>" width="500" height="400"> </canvas>
+          Current price: £<%= product.prices.at(-1).price.toFixed(2) %><br />
+          Added: <%= product.prices.at(0).date.toLocaleDateString() %>
+      </p>
+    <% } else { %>
+      <h1>not found</h1>
+    <% } %>
+  </div>
+  <!-- ######### Product graph ends ######### -->
 </div>
-  <!-- container for products/search -->
+
+
+<!-- ######### Footer starts ######### -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item">RACKET 2022 @Makers</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ######### Footer ends ######### -->
+
+
 </body>
-  
-  <div id="my-basket"></div>
-  <div id="products" ></div>
-   
-  <script>
-    const isLoggedIn = <%- user %>
-  </script>
-  <script src="javascripts/basket/fetchBasket.js"></script>
-  <script src="javascripts/basket/homeIndex.js"></script>
-  <script src="javascripts/chart.js"></script>
-  <script src="javascripts/applyChart.js"></script>
-  <script src="javascripts/createCharts.js"></script>
-  <script src="javascripts/fetchSearch.js"></script>
-  <script src="javascripts/indexExtras.js" defer></script>
-  <script>
-    fetch('/products/all')
-    .then(response => response.json())
-    .then((products) => {
-      createCharts(products, "products")
-    });
-  </script>
 
-  <!-- <script>
-    fetch('/inflation')
-    .then(response => response)
-    .then(console.log(response))
-  </script> -->
 
-</html>
+<script src="/javascripts/chart.js"></script>
+<script src="/javascripts/applyChart.js"></script>
+<script>
+  const product = <%- JSON.stringify(product) %> 
+  applyChart(product)
+</script>

@@ -3,7 +3,11 @@ const Product = require("../models/product");
 
 const BasketController = {
   Index: (req, res) => {
-    res.render("basket/index");
+    if (req.session.user) {
+      res.render("basket/index", { user: req.session.user });
+    } else {
+      res.redirect("/sessions/new")
+    }
   },
 
   Ids: async (req, res) => {
