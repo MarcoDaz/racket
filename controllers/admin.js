@@ -6,7 +6,7 @@ const AdminController = {
   Index: (req, res) => {
     console.log("############## GO GO POWER ADMIN ##############");
 
-    res.render("admin/index");
+    res.render("admin/index", { user: true, layout: "../views/layout" });
   },
   TescoUrls: async (req, res) => {
     const searchTerm = req.query.searchTerm.trim();
