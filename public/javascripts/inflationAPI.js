@@ -1,7 +1,3 @@
-
-
-const phantom = require('phantom');
-
 const getInflation = async () => {
     const url = "https://tradingeconomics.com/united-kingdom/core-inflation-rate";
     const instance = await phantom.create(['--ignore-ssl-errors=yes', '--load-images=no']);

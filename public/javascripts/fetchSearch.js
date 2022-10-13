@@ -1,3 +1,6 @@
+// State
+let searchResults;
+
 const fetchSearch = async (event) => {
   // prevent page from reloading
   event.preventDefault();
@@ -9,6 +12,8 @@ const fetchSearch = async (event) => {
   const apiUrl = event.target.action;
   const response = await fetch(`${apiUrl}?searchTerm=${searchTerm}`);
   const results = await response.json();
+  
+  searchResults = results;
 
   createCharts(results, "products");
 }
