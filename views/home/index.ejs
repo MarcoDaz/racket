@@ -30,7 +30,7 @@
       <p class="product-info">
           <canvas id="<%= product._id %>" width="500" height="400"> </canvas>
           Current price: £<%= product.prices.at(-1).price.toFixed(2) %><br />
-          Added: <%= product.prices.at(0).date.toLocaleDateString() %>
+          Next year this could rise to: <b>£<%= (((product.prices.at(-1).price.toFixed(2))*1.099).toFixed(2)) %>!</b>
       </p>
     <% } else { %>
       <h1>not found</h1>
@@ -38,20 +38,6 @@
   </div>
   <!-- ######### Product graph ends ######### -->
 </div>
-
-
-<!-- ######### Footer starts ######### -->
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="ftco-nav">
-      <ul class="navbar-nav m-auto">
-        <li class="nav-item">RACKET 2022 @Makers</li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- ######### Footer ends ######### -->
-
 
 </body>
 

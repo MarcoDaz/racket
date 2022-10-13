@@ -8491,7 +8491,6 @@ canvas {
   flex: 1;
   padding-top: 25px;
   padding-bottom: 25px;
-
 }  
 
 .flex-child:first-child {
@@ -8499,3 +8498,23 @@ canvas {
   padding: 20px;
   text-align: right;
 } 
+
+.pics-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.pics-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+  align-content: center;
+}
+
+.pics-column img {
+  width: 150px;
+  border-radius: 10px;
+  opacity: 0.8;
+  justify-content: center;
+}
