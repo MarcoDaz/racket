@@ -8175,7 +8175,7 @@ h1, h2, h3, h4, h5,
   background: #ff0000 !important; }
 
 .ftco-section {
-  padding: 7em 0; }
+  padding: 2em 0; }
 
 .ftco-no-pt {
   padding-top: 0; }
@@ -8554,3 +8554,20 @@ canvas {
     width: 16ch;
   }
 }
+.flex-container {
+  display: flex;
+
+}
+
+.flex-child {
+  flex: 1;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+  padding: 20px;
+  text-align: right;
+} 
