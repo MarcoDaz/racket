@@ -4,13 +4,14 @@ const getProduct = require('./getProduct');
 const Product = require('../models/product')
 
 const getUrlsBySearch = async (searchTerm, page = 1) => {
+  console.log("seaching for", searchTerm)
   try {
     const apiUrl = `https://www.tesco.com/groceries/en-GB/search?query=${searchTerm}&page=${page}`;
 
     const response = await axios.get(apiUrl);
     const htmlString = response.data;
     const responseObj = getScriptContent(htmlString);
-
+    console.log("responseObj:", responseObj)
     const urls = responseObj
       .itemListElement
       .map(item => item.url)
