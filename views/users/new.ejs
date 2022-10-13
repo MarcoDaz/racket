@@ -11,10 +11,10 @@
 		<form action="/users" method="post" id="form2">
 			<h1>Create Account</h1>
 			<span>or use your email for registration</span>
-			<input id="email" type="email" name="email" placeholder="email" value="">
-			<input id="username" type="username" name="username" placeholder="username" value="">
-			<input id="password" type="password" name="password" placeholder="password" value="">
-			<button id="submit" type="submit" form="form2" value="Submit">Sign Up</button>
+			<input id="email" type="email" name="email" placeholder="email" required>
+			<input id="username" type="username" name="username" placeholder="username" required>
+			<input id="password" type="password" name="password" placeholder="password" required>
+			<button type="submit" form="form2" value="Submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -26,10 +26,10 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input id="email" type="email" placeholder="email" name="email" value="">
-			<input id="password" type="password" placeholder="password" name="password" value="">
+			<input id="email" type="email" placeholder="email" name="email" required>
+			<input id="password" type="password" placeholder="password" name="password" required>
 			<a href="#">Forgot your password?</a>
-			<button id="submit" type="submit" form="form1" value="Submit">Sign In</button>
+			<button type="submit" form="form1" value="Submit">Sign In</button>
 		</form>
 	
 
@@ -39,12 +39,12 @@
 			<div class="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
-				<button id="submit" class="ghost" id="signIn">Sign In</button>
+				<button class="ghost" id="signIn">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
 				<p>Enter your personal details and start journey with us</p>
-				<button id="submit" class="ghost"id="signUp1">Sign Up</button>
+				<button class="ghost"id="signUp1">Sign Up</button>
 			</div>
 		</div>
 	</div>

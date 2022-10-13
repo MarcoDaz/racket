@@ -8,6 +8,7 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/index.css">
+  <script src="/javascripts/indexExtras.js" defer></script>
   <title></title>
 </head>
 
@@ -68,10 +69,11 @@
       </div>
       <ul class="navbar-nav">
         <% if(!user)  {%>
-        <li class="nav-item"><a class="nav-link" href="/sessions/new">Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="/users/new">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sessions/new">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/users/new">Register</a></li>
         <% } else  { %>
-        <li class="nav-item"><a class="nav-link" href="/sessions/delete">Log out</a></li>
+          <li class="nav-item"><a class="nav-link" href="/basket">Basket</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sessions/delete">Log out</a></li>
         <% } %>
       </ul>
     </div>
