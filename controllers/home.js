@@ -1,4 +1,3 @@
-const phantom = require('phantom');
 const getInflation = require('../public/javascripts/inflationAPI.js');
 const Product = require("../models/product");
 

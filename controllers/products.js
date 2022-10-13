@@ -4,7 +4,7 @@ const ProductsController = {
   All: async (req, res) => {
     console.log("###### Now in ./controllers/products All ######");
 
-    const products = await Product.find().exec();
+    let products = await Product.find().exec();
 
     res.json(products);
   },
@@ -42,7 +42,7 @@ const ProductsController = {
       
     }
     
-    res.render("products/index", {product: product, change: change, lowestPrice: sortByPrice[0], highestPrice: sortByPrice[sortByPrice.length - 1]});
+    res.render("products/index", {title: "Product", user: req.session.user, product: product, change: change, lowestPrice: sortByPrice[0], highestPrice: sortByPrice[sortByPrice.length - 1]});
   },
 
   New: (req, res) => {
@@ -56,6 +56,11 @@ const ProductsController = {
     product.save();
     res.status(201).redirect("/");
   },
+
+  List: (req, res) => {
+    console.log("###### Now in ProductsController List ######");
+    res.render("products/list", {title: "Products", user: req.session.user ? true : false, layout: '../views/layout' });
+  }
 };
 
 module.exports = ProductsController;

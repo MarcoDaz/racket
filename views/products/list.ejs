@@ -1,0 +1,36 @@
+<body>
+  <div id="my-basket"></div>
+  <button class="sortButton" onclick="sortProducts('a-z', this)">A-Z</button>
+  <button class="sortButton" onclick="sortProducts('z-a', this)">Z-A</button>
+  <button class="sortButton" onclick="sortProducts('low-high', this)">(Price) Low to High</button>
+  <button class="sortButton" onclick="sortProducts('high-low', this)">(Price) High to Low</button>
+  <div id="products" ></div>
+   
+  <script>
+    const isLoggedIn = <%- user %>
+  </script>
+  <script src="/javascripts/basket/fetchBasket.js"></script>
+  <script src="/javascripts/basket/homeIndex.js"></script>
+  <script src="/javascripts/chart.js"></script>
+  <script src="/javascripts/applyChart.js"></script>
+  <script src="/javascripts/createCharts.js"></script>
+  <script src="/javascripts/fetchSearch.js"></script>
+  <script src="/javascripts/indexExtras.js" defer></script> 
+  <script src="/javascripts/sortProducts.js"></script>
+  <script>
+    fetch("/products/all")
+    .then(res => res.json())
+    .then(products => {
+      searchResults = products;
+      createCharts(products, "products");
+    })
+  </script>
+  
+  <!-- <script>
+    fetch('/inflation')
+    .then(response => response)
+    .then(console.log(response))
+  </script> -->
+
+
+</body>
