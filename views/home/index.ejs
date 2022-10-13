@@ -31,7 +31,7 @@
         <div class="col-md-8 order-md-last">
           <div class="row">
             <div class="col-md-6 text-center">
-              <a class="navbar-brand" id="Toggle" href="/">Racket<span>save your money</span></a>
+              <a class="navbar-brand" id="Toggle" href="/">Racket<span>How much have they gone up!?</span></a>
             </div>
             <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
               <!-- search form -->
@@ -62,6 +62,9 @@
         </div>
       </div>
     </div>
+
+
+  <!-- ######### Nav bar starts ######### -->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container-fluid">
 
@@ -86,57 +89,73 @@
         </ul>
       </div>
     </nav>
-    <!-- END nav -->
-
+  <!-- ######### Nav bar ends ######### -->
   </section>
-
-  <div class="inflationInfo-grid">
-  <h3>What is inflation?</h3>
-  <h4>And how is it calculated?</h4>
-  <p>
-    Imagine your shopping basket contains 10 items. If those 10 items all go up in price by 10 percent, then the cost has been "inflated" by 10%.
-    In actual fact, around 100,000 prices are found for roughly 520 items from all categories, across 150 locations in the UK.
-    These are compared with the price of the same products from last year, and the percentage increase/decrease is calculated.
-  </p>
-  <h4>This is inflation!</h4>
-  <p>
-    Currently the rate of inflation is at 9.9%.
-    <!-- would be nice if this number was collected from the inflationAPI.js -->
-  </p>
-  <h4>What does this mean for me?</h4>
-  <p>
-    This means that your hard-earned money can now buy 9.9% less of the same products as last year...
-    <b>OR</b> your average shopping basket has increased in price by around 9.9%!
-  </p>
-</div>
-  <!-- container for products/search -->
-</body>
   
-  <div id="my-basket"></div>
-  <div id="products" ></div>
-   
-  <script>
-    const isLoggedIn = <%- user %>
-  </script>
-  <script src="javascripts/basket/fetchBasket.js"></script>
-  <script src="javascripts/basket/homeIndex.js"></script>
-  <script src="javascripts/chart.js"></script>
-  <script src="javascripts/applyChart.js"></script>
-  <script src="javascripts/createCharts.js"></script>
-  <script src="javascripts/fetchSearch.js"></script>
-  <script src="javascripts/indexExtras.js" defer></script>
-  <script>
-    fetch('/products/all')
-    .then(response => response.json())
-    .then((products) => {
-      createCharts(products, "products")
-    });
-  </script>
 
-  <!-- <script>
-    fetch('/inflation')
-    .then(response => response)
-    .then(console.log(response))
-  </script> -->
+
+
+<div class="flex-container">
+<!-- ######### Inflation info starts ######### -->
+  <div class="flex-child">
+    <h3>What is inflation? &#128184</h3>
+    <h4>And how is it calculated? &#128405</h4>
+      <p>
+        Imagine your shopping basket contains <b>10 items</b>. If those 10 items <b>all</b> go up in price by 10 percent, then the cost has been "inflated" by 10%.
+        In actual fact, around <b>100,000</b> prices are found for roughly 520 items from all categories, across 150 locations in the UK.
+        These are compared with the price of the same products from last year, and the percentage increase/decrease is calculated.
+      </p>
+    <h4>This is inflation! &#128293</h4>
+      <p>
+        Currently the rate of inflation is at 9.9%.
+        <!-- would be nice if this number was collected from the inflationAPI.js -->
+      </p>
+    <h4>What does this mean for me? &#128585</h4>
+      <p>
+        This means that your hard-earned money can now buy 9.9% less of the same products as last year...
+        <b>OR</b> your average shopping basket has increased in price by around 9.9%!
+      </p>
+  </div>
+<!-- ######### Inflation info ends ######### -->
+
+
+<!-- ######### Product graph starts ######### -->
+  <div class="flex-child">
+    <% if (product) { %>
+      <p class="product-info">
+          <canvas id="<%= product._id %>" width="500" height="400"> </canvas>
+          Current price: £<%= product.prices.at(-1).price.toFixed(2) %><br />
+          Added: <%= product.prices.at(0).date.toLocaleDateString() %>
+      </p>
+    <% } else { %>
+      <h1>not found</h1>
+    <% } %>
+  </div>
+  <!-- ######### Product graph ends ######### -->
+</div>
+
+
+<!-- ######### Footer starts ######### -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item">RACKET 2022 @Makers</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ######### Footer ends ######### -->
+
+
+</body>
+
+
+<script src="/javascripts/chart.js"></script>
+<script src="/javascripts/applyChart.js"></script>
+<script>
+  const product = <%- JSON.stringify(product) %> 
+  applyChart(product)
+</script>
 
 </html>
