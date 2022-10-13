@@ -2,7 +2,7 @@ const express = require("express");
 const BasketController = require("../controllers/basket");
 const router = express.Router();
 
-// router.get("/", BasketController.Index);
+router.get("/", BasketController.Index);
 
 // Getters:
 router.get("/ids", BasketController.Ids)
