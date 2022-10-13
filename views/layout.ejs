@@ -5,11 +5,84 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/index.css">
   <title></title>
 </head>
 
 <body>
-  <%-body%>
+
+<section class="ftco-section">
+  <div class="container-fluid px-md-5">
+    <div class="row justify-content-between">
+      <div class="col-md-8 order-md-last">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <a class="navbar-brand" id="Toggle" href="/">Racket<span>How much have they gone up!?</span></a>
+          </div>
+          <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+            <!-- search form -->
+            <form action="/products/search" class="searchform order-lg-last" onSubmit="fetchSearch(event)">
+              <div class="form-group d-flex">
+                <input type="text" name="searchTerm" class="form-control pl-3" placeholder="Search">
+                <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+        <div class="social-media">
+          <p class="mb-0 d-flex">
+            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">balls</i></span></a>
+          </p>
+               <div>
+              <label class="switch">
+                <input type="checkbox" id="dark">
+                <span class="slider round"></span>
+              </label>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- ######### Nav bar starts ######### -->
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="/about" class="nav-link">About us</a></li>
+
+        </ul>
+      </div>
+      <ul class="navbar-nav">
+        <% if(!user)  {%>
+        <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
+        <% } else  { %>
+        <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- ######### Nav bar ends ######### -->
+  <main> <%-body%> </main>
 </body>
+
+
+
 
 </html>
