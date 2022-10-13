@@ -43,7 +43,7 @@
       <p class="product-info">
           <canvas id="<%= product._id %>" width="500" height="400"> </canvas>
           Current price: £<%= product.prices.at(-1).price.toFixed(2) %><br />
-          Added: <%= product.prices.at(0).date.toLocaleDateString() %>
+          Next year this could rise to: <b>£<%= (((product.prices.at(-1).price.toFixed(2))*1.099).toFixed(2)) %>!</b>
       </p>
     <% } else { %>
       <h1>not found</h1>
