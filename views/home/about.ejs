@@ -19,8 +19,8 @@
                     <div class="col-md-6 text-center mb-5">
                         <h2 class="heading-section">Welcome</h2>
                     </div>
-                </div>  maybe there will be an animation -->
-        </div>
+                </div>  maybe there will be an animation
+        </div> -->
     
         <div class="container-fluid px-md-5">
           <div class="row justify-content-between">
@@ -74,10 +74,11 @@
             </div>
             <ul class="navbar-nav">
               <% if(!user)  {%>
-              <li class="nav-item"><a class="nav-link" href="sessions/new">Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="users/new">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sessions/new">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/users/new">Register</a></li>
               <% } else  { %>
-                <li class="nav-item"><a class="nav-link" href="sessions/delete">Log out</a></li>
+                <li class="nav-item"><a class="nav-link" href="/basket">Basket</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sessions/delete">Log out</a></li>
               <% } %>
             </ul>
           </div>
