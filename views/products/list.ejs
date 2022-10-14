@@ -1,5 +1,13 @@
 <body>
   <div id="my-basket"></div>
+
+  <form action="/products/search" class="searchform order-lg-last" onSubmit="fetchSearch(event)">
+    <div class="form-group d-flex">
+      <input type="text" name="searchTerm" class="form-control pl-3" placeholder="Search">
+      <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+    </div>
+  </form><br>
+
   <button class="sortButton" onclick="sortProducts('a-z', this)">A-Z</button>
   <button class="sortButton" onclick="sortProducts('z-a', this)">Z-A</button>
   <button class="sortButton" onclick="sortProducts('low-high', this)">(Price) Low to High</button>

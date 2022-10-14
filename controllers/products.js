@@ -8,7 +8,7 @@ const ProductsController = {
 
     res.json(products);
   },
-  
+
   Search: async (req, res) => {
     console.log("###### Now in ./controllers/products Search ######");
     const searchTerm = req.query.searchTerm.trim();
@@ -19,12 +19,12 @@ const ProductsController = {
         name: new RegExp(searchTerm, "i"),
       }).exec();
     }
-    
+
     res.json(results);
   },
 
   ID: async (req, res) => {
-    console.log("############# Now in ProductsController ID #################")
+    console.log("############# Now in ProductsController ID #################");
     const productID = req.params.id;
     let product = false;
     let sortByPrice;
@@ -32,21 +32,31 @@ const ProductsController = {
     try {
       product = await Product.findById(productID).exec();
       sortByPrice = product.prices.slice().sort((priceObj1, priceObj2) => {
-        return priceObj1.price - priceObj2.price
-      } )
+        return priceObj1.price - priceObj2.price;
+      });
 
-      change = (product.prices[product.prices.length - 1].price - product.prices[0].price) / product.prices[0].price * 100
+      change =
+        ((product.prices[product.prices.length - 1].price -
+          product.prices[0].price) /
+          product.prices[0].price) *
+        100;
 
       //console.log(sortByPrice.map(obj => obj.price));
-    } catch (error) {
-      
-    }
-    
-    res.render("products/index", {title: "Product", user: req.session.user, product: product, change: change, lowestPrice: sortByPrice[0], highestPrice: sortByPrice[sortByPrice.length - 1]});
+    } catch (error) {}
+
+    res.render("products/index", {
+      title: "Product",
+      user: req.session.user,
+      product: product,
+      change: change,
+      lowestPrice: sortByPrice[0],
+      highestPrice: sortByPrice[sortByPrice.length - 1],
+      layout: "../views/layout"
+    });
   },
 
   New: (req, res) => {
-    console.log("############## Now in ProductsController New ##############")
+    console.log("############## Now in ProductsController New ##############");
     res.render("products/new", {});
   },
 
@@ -59,8 +69,12 @@ const ProductsController = {
 
   List: (req, res) => {
     console.log("###### Now in ProductsController List ######");
-    res.render("products/list", {title: "Products", user: req.session.user ? true : false, layout: '../views/layout' });
-  }
+    res.render("products/list", {
+      title: "Products",
+      user: req.session.user ? true : false,
+      layout: "../views/layout",
+    });
+  },
 };
 
 module.exports = ProductsController;
