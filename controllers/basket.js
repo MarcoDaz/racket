@@ -4,7 +4,7 @@ const Product = require("../models/product");
 const BasketController = {
   Index: (req, res) => {
     if (req.session.user) {
-      res.render("basket/index", { user: req.session.user, layout: "../views/layout" });
+      res.render("basket/index", { user: req.session.user, layout: "../views/layout", title: 'Basket' });
     } else {
       res.redirect("/sessions/new")
     }

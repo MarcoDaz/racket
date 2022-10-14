@@ -45,7 +45,7 @@ const ProductsController = {
     } catch (error) {}
 
     res.render("products/index", {
-      title: "Product",
+      title: product.name,
       user: req.session.user,
       product: product,
       change: change,
